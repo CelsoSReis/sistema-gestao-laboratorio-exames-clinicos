@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+  	<title>LCLAB | Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
+    
+</head>
+<body class="background-login">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <!--<h2 class="heading-section">LCLAB</h2>-->
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="img" style=" background-image: url({% static 'usuarios/images/bg-1.svg' %});">
+                        </div>
+                        <div class="login-wrap p-4 p-md-5 background-section">
+                        <div class="d-flex">
+                            <div class="w-100 d-flex align-items-center justify-content-center">
+                                <img src="{% static 'usuarios/images/lclab.svg' %}" alt="lclab" width="80">
+                                <!--<h3 class="mb-4 text-white">Login</h3>-->
+                            </div>
+                        </div>
+                        <form action="{% url 'login' %}" method="POST" class="signin-form">{% csrf_token %}
+                            <div class="form-group mb-3">
+                                <label class="label text-white" for="name">Usuário</label>
+                                <input type="text" class="form-control" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label text-white" for="password">Senha</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <!--Exibe as mensagens de alerta django-->
+                                {% if messages %}
+                                    <br>
+                                    {% for message in messages %}
+                                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Entrar</button>
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-50 text-left">
+                                    <label class="checkbox-wrap checkbox-primary mb-0 text-white">Manter Conectado
+                                        <input type="checkbox" >
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <!--<div class="w-50 text-md-right">
+                                    <a href="#">Forgot Password</a>
+                                </div>-->
+                            </div>
+                        </form>
+                  <!--<p class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--End div container-->
+    </section>
+<script src="{% static 'usuarios/js/jquery.min.js' %}"></script>
+<script src="{% static 'usuarios/js/popper.js' %}"></script>
+<script src="{% static 'usuarios/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'usuarios/js/main.js' %}"></script>
+</body>
+</html>
