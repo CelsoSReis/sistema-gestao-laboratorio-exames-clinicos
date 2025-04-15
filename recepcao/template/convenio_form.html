@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if convenio %}Editar{% else %}Novo{% endif %} Convênio</h2>
+<form method="post">
+  {% csrf_token %}
+  <label>Nome:</label><input type="text" name="nome" value="{{ convenio.nome|default_if_none:'' }}"><br>
+  <label>CNPJ:</label><input type="text" name="cnpj" value="{{ convenio.cnpj|default_if_none:'' }}"><br>
+  <label>Telefone:</label><input type="text" name="telefone" value="{{ convenio.telefone|default_if_none:'' }}"><br>
+  <label>Email:</label><input type="email" name="email" value="{{ convenio.email|default_if_none:'' }}"><br>
+  <label>Site:</label><input type="text" name="site" value="{{ convenio.site|default_if_none:'' }}"><br>
+  <label>Ativo:</label><input type="checkbox" name="ativo" {% if convenio.ativo %}checked{% endif %}><br>
+  <button type="submit">Salvar</button>
+</form>
+<a href="{% url 'convenio_list' %}">Voltar</a>
+{% endblock %}

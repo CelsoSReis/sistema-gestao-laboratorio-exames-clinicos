@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Convênios</h2>
+<a href="{% url 'convenio_create' %}">Novo Convênio</a>
+<table>
+  <tr>
+    <th>Nome</th><th>Telefone</th><th>Email</th><th>Ações</th>
+  </tr>
+  {% for convenio in convenios %}
+  <tr>
+    <td>{{ convenio.nome }}</td>
+    <td>{{ convenio.telefone }}</td>
+    <td>{{ convenio.email }}</td>
+    <td>
+      <a href="{% url 'convenio_update' convenio.id %}">Editar</a>
+      <a href="{% url 'convenio_delete' convenio.id %}">Excluir</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

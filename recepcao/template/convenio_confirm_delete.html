@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Excluir Convênio</h2>
+<p>Tem certeza que deseja excluir <strong>{{ convenio.nome }}</strong>?</p>
+<form method="post">{% csrf_token %}
+  <button type="submit">Sim, excluir</button>
+  <a href="{% url 'convenio_list' %}">Cancelar</a>
+</form>
+{% endblock %}
