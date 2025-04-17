@@ -1,5 +1,5 @@
 from django.db import models
-
+"""
 # Create your models here.
 class Paciente(models.Model):
     nome = models.CharField(max_length=255)
@@ -9,3 +9,4 @@ class Paciente(models.Model):
     email = models.EmailField(blank=True, null=True)
     endereco = models.TextField(blank=True, null=True)
     convenio = models.ForeignKey('Convenio', on_delete=models.SET_NULL, null=True, blank=True)
+"""

@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class TipoExame(models.Model):
+"""class TipoExame(models.Model):
     nome = models.CharField(max_length=255)
     descricao = models.TextField(blank=True)
     preparo = models.TextField(blank=True)
@@ -13,4 +13,4 @@ class Exame(models.Model):
     data_coleta = models.DateTimeField()
     data_resultado = models.DateTimeField(blank=True, null=True)
     resultado = models.TextField(blank=True, null=True)
-    status = models.CharField(max_length=20, choices=[('pendente', 'Pendente'), ('coletado', 'Coletado'), ('concluido', 'Concluído')])
+    status = models.CharField(max_length=20, choices=[('pendente', 'Pendente'), ('coletado', 'Coletado'), ('concluido', 'Concluído')])"""

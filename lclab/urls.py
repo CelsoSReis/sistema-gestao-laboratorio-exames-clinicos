@@ -21,7 +21,5 @@ from usuarios import views as usuario_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('usuarios.urls')),
-    path('administrador/dashboard/', usuario_views.dashboard_admin, name='dashboard_admin'),
-    path('biomedico/dashboard/', usuario_views.dashboard_biomedico, name='dashboard_biomedico'),
-    path('recepcao/dashboard/', usuario_views.dashboard_recepcao, name='dashboard_recepcao'),
+    path('recepcao/', include('recepcao.urls')),
 ]
