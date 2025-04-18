@@ -13,7 +13,7 @@ def dashboard_medico(request):
 def dashboard_recepcionista(request):
     if request.user.perfil.tipo != 'recepcionista':
         return render(request, 'usuarios/sem_permissao.html')
-    return render(request, 'usuarios/dashboard_recepcionista.html')
+    return render(request, 'recepcao/dashboard_recepcionista.html')
 
 @login_required
 def painel_admin(request):
@@ -44,8 +44,6 @@ def login_view(request):
 
     return render(request, 'usuarios/login.html')
 
-    from django.contrib.auth import logout
-from django.shortcuts import redirect
 
 def logout_view(request):
     logout(request)
