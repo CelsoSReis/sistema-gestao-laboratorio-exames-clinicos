@@ -1,37 +1,52 @@
-# usuarios/views.py
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
-from django.contrib.auth.models import User
-from .models import Perfil
-from django.contrib import messages
-from django.contrib.messages import constants
+from django.contrib.auth import authenticate, login, logout
 
-#Função cadastro
+
+@login_required
+def dashboard_medico(request):
+    if request.user.perfil.tipo != 'medico':
+        return render(request, 'usuarios/sem_permissao.html')
+    return render(request, 'usuarios/dashboard_medico.html')
+
+@login_required
+def dashboard_recepcionista(request):
+    if request.user.perfil.tipo != 'recepcionista':
+        return render(request, 'usuarios/sem_permissao.html')
+    return render(request, 'usuarios/dashboard_recepcionista.html')
+
+@login_required
+def painel_admin(request):
+    if request.user.perfil.tipo != 'admin':
+        return render(request, 'usuarios/sem_permissao.html')
+    return render(request, 'usuarios/painel_admin.html')
+
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        senha = request.POST.get('password')
+        username = request.POST['username']
+        senha = request.POST['password']
         user = authenticate(request, username=username, password=senha)
 
-        if user is not None and hasattr(user, 'perfil'):
+        if user is not None:
             login(request, user)
-            cargo = user.perfil.cargo
 
-            if cargo == 'administrador':
-                return redirect('/admin/dashboard.html/')
-            elif cargo == 'biomedico':
-                return redirect('/biomedico/dashboard/')
-            elif cargo == 'recepcionista':
-                return redirect('dashboard_recepcao')
-            return redirect('/')
+            tipo = user.perfil.tipo
+            if tipo == 'medico':
+                return redirect('dashboard_medico')
+            elif tipo == 'recepcionista':
+                return redirect('dashboard_recepcionista')
+            elif tipo == 'admin':
+                return redirect('painel_admin')
+            else:
+                return redirect('/')  # ou outra view padrão
         else:
-            messages.add_message(request, constants.ERROR, 'Usuario ou senha incorretos!')
-    return render(request, 'bases/login.html')
+            return render(request, 'usuarios/login.html', {'erro': 'Usuário ou senha inválidos'})
+
+    return render(request, 'usuarios/login.html')
+
+    from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 def logout_view(request):
     logout(request)
     return redirect('login')
-
-

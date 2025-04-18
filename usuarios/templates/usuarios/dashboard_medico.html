@@ -1,0 +1,3 @@
+<h2>Bem-vindo, {{ user.username }}!</h2>
+<p>Você está logado como {{ user.perfil.get_tipo_display }}</p>
+<a href="{% url 'logout' %}">Sair</a>

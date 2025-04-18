@@ -56,7 +56,8 @@ ROOT_URLCONF = 'lclab.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],#Concatenação de diretórios templates,
+        #'DIRS': [os.path.join(BASE_DIR, 'templates')],#Concatenação de diretórios templates,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -153,7 +154,8 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 #AUTH_USER_MODEL = 'usuarios.Usuario'
 
 # usado pelo @login_required
-LOGIN_URL = '/usuarios/login/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 # Mensagens
 
