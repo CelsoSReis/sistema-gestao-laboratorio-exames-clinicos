@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>LCLab - Sistema de Gestão</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <p>Olá, {{ user.username }} | 
+            <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+                <button type="submit">Sair</button>
+            </form>
+        </p>
+    {% endif %}
+
+    <hr>
+
+    {% block content %}{% endblock %}
+</body>
+</html>
+

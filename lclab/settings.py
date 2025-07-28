@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usuarios',
+    'rest_framework',      # Se for usar Django REST Framework
+    'core',                # app principal
 ]
+
+AUTH_USER_MODEL = 'core.Usuario'  # Definindo modelo de usuário customizado
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -155,7 +158,8 @@ SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 # usado pelo @login_required
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_REDIRECT_URL = 'home'   # ou outra view principal do sistema
+LOGOUT_REDIRECT_URL = 'login'
 
 # Mensagens
 
