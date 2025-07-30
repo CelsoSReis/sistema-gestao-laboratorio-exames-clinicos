@@ -1,0 +1,10 @@
+{% extends 'bases/index_recepcao.html' %}
+{% block 'content' %}
+<h2>Excluir Paciente</h2>
+<p>Tem certeza que deseja excluir "{{ object.nome }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar</button>
+    <a href="{% url 'paciente-list' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -356,7 +356,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    {% block 'conteudo' %}
+                    {% block 'content' %}
             
             
                     {% endblock %}
@@ -393,17 +393,21 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sair?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja Sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Tem certeza que deseja sair?</div>
+                
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="{% url 'logout' %}">Sim</a>
-                    <h2>Bem-vindo, !</h2>
-                    
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Não</button>
+                    {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                                <button class="btn btn-primary" type="submit"> Sim </button>
+                            </form>
+                        </p>
+                    {% endif %}               
 
                 </div>
             </div>
