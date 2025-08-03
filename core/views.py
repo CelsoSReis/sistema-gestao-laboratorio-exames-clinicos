@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
@@ -6,6 +7,7 @@ from django.urls import reverse_lazy
 from .models import Paciente
 
 # Home protegida
+@login_required(login_url='/login')
 def home(request):
     return render(request, 'core/home.html')
 
