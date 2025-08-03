@@ -1,22 +1,57 @@
 {% extends 'bases/index_recepcao.html' %}
+{% load static %}
 {% block 'content' %}
 <h2>Pacientes</h2>
 <p><a href="{% url 'paciente-create' %}">+ Novo Paciente</a></p>
-<table>
-    <tr>
-        <th>Nome</th><th>CPF</th><th>Ações</th>
-    </tr>
-    {% for paciente in pacientes %}
-    <tr>
-        <td>{{ paciente.nome }}</td>
-        <td>{{ paciente.cpf }}</td>
-        <td>
-            <a href="{% url 'paciente-update' paciente.pk %}">Editar</a> |
-            <a href="{% url 'paciente-delete' paciente.pk %}">Excluir</a>
-        </td>
-    </tr>
-    {% empty %}
-    <tr><td colspan="3">Nenhum paciente encontrado.</td></tr>
-    {% endfor %}
-</table>
+
+
+<!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank"
+            href="https://datatables.net">official DataTables documentation</a>.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Ações</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for paciente in pacientes %}
+                        <tr>
+                            <td>{{ paciente.nome }}</td>
+                            <td>{{ paciente.cpf }}</td>
+                            <td>
+                                <a href="{% url 'paciente-update' paciente.pk %}">Editar</a> |
+                                <a href="{% url 'paciente-delete' paciente.pk %}">Excluir</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="3">Nenhum paciente encontrado.</td></tr>
+                        {% endfor %}
+                    
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
