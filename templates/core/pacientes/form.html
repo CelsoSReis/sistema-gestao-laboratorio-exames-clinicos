@@ -1,28 +1,40 @@
 {% extends 'bases/index_recepcao.html' %}
 {% block 'content' %}
 <h2>{{ view.object.pk|yesno:"Editar Paciente,Novo Paciente" }}</h2>
-<form method="post">
+
+<form class="row g-3" method="post">
     {% csrf_token %}
-    <div>
-        <label>Nome:</label>
-        <input type="text" name="nome" value="{{ form.nome.value }}" required>
+  <div class="col-md-6">
+    <label for="inputNome4" class="form-label">Nome:</label>
+    <input type="text" class="form-control" name="nome" id="inputNome4" value="{{ form.nome.value }}" required>
+  </div>
+  <div class="col-md-2">
+    <label for="inputData4" class="form-label">Data de Nascimento:</label>
+    <input type="date" class="form-control" id="inputData4" name="data_nascimento" value="{{ form.data_nascimento.value }}" required>
+  </div>
+  <div class="col-3">
+    <label for="inputCpf" class="form-label">CPF:</label>
+    <input type="text" class="form-control" id="inputCpf" name="cpf" value="{{ form.cpf.value }}" required>
+  </div>
+  <div class="col-2">
+    <label for="inputFone2" class="form-label">Telefone:</label>
+    <input type="text" class="form-control" id="inputFone2" name="telefone" value="{{ form.telefone.value }}">
+  </div>
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email:</label>
+    <input type="email" class="form-control" id="inputEmail4" name="email" value="{{ form.email.value }}">
+  </div>
+  
+  <div class="col-12">
+    <div class="form-check">
+      
+      <label class="form-check-label" for="gridCheck">
+
+    </label>
     </div>
-    <div>
-        <label>Data de Nascimento:</label>
-        <input type="date" name="data_nascimento" value="{{ form.data_nascimento.value }}" required>
-    </div>
-    <div>
-        <label>CPF:</label>
-        <input type="text" name="cpf" value="{{ form.cpf.value }}" required>
-    </div>
-    <div>
-        <label>Telefone:</label>
-        <input type="text" name="telefone" value="{{ form.telefone.value }}">
-    </div>
-    <div>
-        <label>Email:</label>
-        <input type="email" name="email" value="{{ form.email.value }}">
-    </div>
-    <button type="submit">Salvar</button>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </div>
 </form>
 {% endblock %}
