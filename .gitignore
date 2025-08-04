@@ -175,5 +175,4 @@ cython_debug/
 .pypirc
 
 # settings
-.settings.py
 settings.py
