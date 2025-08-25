@@ -6,6 +6,7 @@ class Usuario(AbstractUser):
         ('admin', 'Administrador'),
         ('biomedico', 'Biomédico'),
         ('recepcao', 'Recepcionista'),
+        ('tecnico', 'Técnico'),
     )
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
 
