@@ -3,6 +3,24 @@ from django.conf import settings
 import uuid
 
 class Paciente(models.Model):
+    COR_CHOICES = [
+        ("branca", "Branca"),
+        ("parda", "Parda"),
+        ("preta", "Preta"),
+        ("amarela", "Amarela"),
+        ("indigena", "Indígena"),
+    ]
+    estado_civil_CHOICES = [
+        ("solteiro", "Solteiro(a)"),
+        ("casado", "Casado(a)"),
+        ("divorciado", "Divorciado(a)"),
+        ("viuvo", "Viúvo(a)"),
+    ]
+    escolaridade_CHOICES = [
+        ("ensinoFundamental", "Ensino Fundamental"),
+        ("ensinoMedio", "Ensino Médio"),
+        ("superior", "Superior"),
+    ]
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome_completo = models.CharField(max_length=255)
     cpf = models.CharField(max_length=14, unique=True)
@@ -10,6 +28,20 @@ class Paciente(models.Model):
     telefone = models.CharField(max_length=20, blank=True)
     email = models.EmailField(blank=True)
     endereco = models.TextField(blank=True)
+    complemento = models.CharField(max_length=255, blank=True)
+    bairro = models.CharField(max_length=255, blank=True)
+    cidade = models.CharField(max_length=255, blank=True)
+    cep = models.CharField(max_length=20, blank=True)
+    celular = models.CharField(max_length=20, blank=True)
+    rg = models.CharField(max_length=20, blank=True)
+    orgao_exp = models.CharField(max_length=10, blank=True)
+    cor = models.CharField(max_length=20, choices=COR_CHOICES, blank=True)
+    nome_mae = models.CharField(max_length=255, blank=True)
+    nome_pai = models.CharField(max_length=255, blank=True)
+    estado_civil = models.CharField(max_length=20, choices=estado_civil_CHOICES, blank=True)
+    escolaridade = models.CharField(max_length=50, choices=escolaridade_CHOICES, blank=True)
+    profissao = models.CharField(max_length=255, blank=True)
+    observacoes = models.TextField(blank=True)
 
     def __str__(self):
         return self.nome_completo

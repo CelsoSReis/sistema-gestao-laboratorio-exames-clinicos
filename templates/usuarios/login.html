@@ -35,35 +35,40 @@
                         <form method="POST" class="signin-form">
                             {% csrf_token %}
                             <div class="form-group mb-3">
-                                <label class="label text-white" for="name">Usuário</label>
+                                <label class="label text-white" for="id_username">Usuário</label>
                                 <input type="text" class="form-control" name="username" placeholder="Username" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label class="label text-white" for="password">Senha</label>
+                                <label class="label text-white" for="id_password">Senha</label>
                                 <input type="password" class="form-control" name="password" placeholder="Password" required>
                             </div>
                             <div class="form-group">
-                                <!--Exibe as mensagens de alerta django-->
+                                {% if form.errors %}
+                                    <div class="alert alert-danger mt-3">
+                                    Usuário ou senha inválidos.
+                                    </div>
+                                {% endif %}
+                                <!--Exibe as mensagens de alerta django
                                 {% if messages %}
                                     <br>
                                     {% for message in messages %}
                                     <div class="alert {{ message.tags }}">{{ message }}</div>
                                     {% endfor %}
-                                {% endif %}
+                                {% endif %}-->
                                 <p style="color: red;">{{ erro }}</p>
                                 <button type="submit" class="form-control btn btn-primary rounded submit px-3">Entrar</button>
                             </div>
-                            <div class="form-group d-md-flex">
+                            <!--<div class="form-group d-md-flex">
                                 <div class="w-50 text-left">
                                     <label class="checkbox-wrap checkbox-primary mb-0 text-white">Manter Conectado
                                         <input type="checkbox" >
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <!--<div class="w-50 text-md-right">
+                                <div class="w-50 text-md-right">
                                     <a href="#">Forgot Password</a>
-                                </div>-->
-                            </div>
+                                </div>
+                            </div>-->
                         </form>
                   <!--<p class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>-->
                         </div>

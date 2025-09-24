@@ -6,7 +6,7 @@ from .models import Paciente, Exame, Pedido
 
 @admin.register(Paciente)
 class PacienteAdmin(admin.ModelAdmin):
-    list_display = ("nome_completo", "cpf", "data_nascimento", "telefone", "email")
+    list_display = ("nome_completo", "cpf", "data_nascimento", "telefone", "email", "complemento", "cidade", "bairro", "cep", "celular", "rg", "orgao_exp", "cor", "nome_mae", "nome_pai", "estado_civil", "escolaridade", "profissao", "observacoes")
     search_fields = ("nome_completo", "cpf")
 
 @admin.register(Exame)
