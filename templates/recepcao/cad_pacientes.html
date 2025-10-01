@@ -1,18 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Celso Reis">
-    <title>LClab</title>
+    <meta name="author" content="">
+
+    <title>Recepção - LClab</title>
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'principal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -43,7 +46,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'index' %}">
-                    <i class="fas fa-fw fa-home"></i>
+                    <i class="fas fa-solid fa-clipboard"></i>
                     <span>Home</span></a>
             </li>
 
@@ -95,9 +98,7 @@
                         <a class="collapse-item" href="#">Resultados</a>
                     </div>
                 </div>
-            </li>
-
-           
+            </li>           
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedico"
@@ -258,7 +259,6 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Mostrar mais...</a>
                             </div>
                         </li>
-
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
@@ -321,7 +321,6 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configurações
                                 </a>
-                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -329,9 +328,7 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -340,218 +337,192 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+                        <h2 class="h3 mb-0 text-gray-800">Novo Paciente</h2>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Pacientes -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <a href="{% url 'cadastro_paciente' %}">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Pacientes</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-solid fa-users fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
+    
+                          <div class="col-md-7 col-lg-10">
+                            <form class="needs-validation" novalidate>
+                              <div class="row g-3">
+                                <div class="col-md-2 mb-2">
+                                  <label for="cod" class="form-label">Código</label>
+                                  <input type="text" class="form-control" id="cod" placeholder="" required>
                                 </div>
-                            </div>
-                            </a>
-                        </div>
 
-                        <!-- Exames -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Exames</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-solid fa-syringe fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
+                                <div class="col-md-8 mb-2">
+                                  <label for="Nome" class="form-label">Nome</label>
+                                  <input type="text" class="form-control" id="Nome" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                    Digite o nome do paciente.
+                                  </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- Financeiro -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Financeiro</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
+                                <div class="col-md-6 mb-2">
+                                  <label for="Endereco" class="form-label">Endereço</label>
+                                  <input type="text" class="form-control" id="Endereco" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                    Digite o endereço do paciente.
+                                  </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        
-
-                        <!-- Relatórios -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Relatórios</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-solid fa-paste fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
+                                <div class="col-md-4 mb-2">
+                                  <label for="Endereco" class="form-label">Complemento</label>
+                                  <input type="text" class="form-control" id="Endereco" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                    Digite o complemento.
+                                  </div>
                                 </div>
-                            </div>
-                        </div>
+
+                                <div class="col-md-4 mb-2">
+                                  <label for="Bairro" class="form-label">Bairro</label>
+                                  <input type="text" class="form-control" id="Bairro" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                    Digite o Bairro.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6 mb-2">
+                                  <label for="Cidade" class="form-label">Cidade</label>
+                                  <input type="text" class="form-control" id="Cidade" placeholder="" value="" required>
+                                  <div class="invalid-feedback">
+                                    Digite a cidade do paciente.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-4 mb-2">
+                                  <label for="cep" class="form-label">CEP</label>
+                                  <input type="text" class="form-control" id="cep" placeholder="" required>
+                                </div>
+
+                                <div class="col-md-3 mb-2">
+                                  <label for="telefone" class="form-label">Telefone</label>
+                                  <input type="text" class="form-control" id="telefone" placeholder="" required>
+                                </div>
+
+                                <div class="col-md-3 mb-2">
+                                  <label for="celular" class="form-label">Celular</label>
+                                  <input type="text" class="form-control" id="celular" placeholder="" required>
+                                </div>
+
+                                <div class="col-5">
+                                  <label for="email" class="form-label">Email <span class="text-muted">(Opicional)</span></label>
+                                  <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com">
+                                  <div class="invalid-feedback">
+                                    Insira um e-mail válido.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-3 mb-2">
+                                  <label for="rg" class="form-label">RG</label>
+                                  <input type="text" class="form-control" id="rg" placeholder="" required>
+                                </div>
+
+                                <div class="col-md-2 mb-2">
+                                  <label for="orgao" class="form-label">Orgão Exp</label>
+                                  <input type="text" class="form-control" id="orgao" placeholder="" required>
+                                </div>
+
+                                <div class="col-md-4 mb-2">
+                                  <label for="cpf" class="form-label">CPF</label>
+                                  <input type="text" class="form-control" id="cpf" placeholder="" required>
+                                </div>
+
+                                <div class="col-md-3 mb-2">
+                                  <label for="nasc" class="form-label">Nascimento</label>
+                                  <input type="date" class="form-control" id="nasc" placeholder="" required>
+                                </div>
+
+                                <div class="col-md-3">
+                                  <label for="cor" class="form-label mb-2">Cor/Raça</label>
+                                  <br>
+                                  <select class="form-control" id="cor" required>
+                                    <option value="">Selecione...</option>
+                                    <option>Branca</option>
+                                    <option>Parda</option>
+                                  </select>
+                                  <div class="invalid-feedback">
+                                    Selecione a cor/raça.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-10 mb-2">
+                                  <label for="nome_mae" class="form-label">Nome da Mãe</label>
+                                  <input type="text" class="form-control" id="nome_mae" placeholder="Nome da mãe" required>
+                                  <div class="invalid-feedback">
+                                    Digite o nome da mãe.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-10 mb-2">
+                                  <label for="nome_pai" class="form-label">Nome do Pai</label>
+                                  <input type="text" class="form-control" id="nome_pai" placeholder="Nome do pai" required>
+                                  <div class="invalid-feedback">
+                                    Digite o nome da mãe.
+                                  </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-2">
+                                  <label for="cor" class="form-label mb-2">Estado Civil</label>
+                                  <br>
+                                  <select class="form-control" id="cor" required>
+                                    <option value="">Selecione...</option>
+                                    <option>Solteiro(a)</option>
+                                    <option>Casado(a)</option>
+                                    <option>Divorciado(a)</option>
+                                    <option>Viúvo(a)</option>
+                                  </select>
+                                  <div class="invalid-feedback">
+                                    Selecione o estado civil.
+                                  </div>
+                                </div>
+
+
+                                <div class="col-md-3 mb-2">
+                                  <label for="cor" class="form-label mb-2">Escolaridade</label>
+                                  <br>
+                                  <select class="form-control" id="cor" required>
+                                    <option value="">Selecione...</option>
+                                    <option>Ensino Fundamental</option>
+                                    <option>Ensino Médio</option>
+                                    <option>Ensino Superior</option>
+                                    <option>Ensino Superior Incompleto</option>
+                                  </select>
+                                  <div class="invalid-feedback">
+                                    Selecione a escolaridade.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-10 mb-2">
+                                  <label for="nome_profissão" class="form-label">Profissão</label>
+                                  <input type="text" class="form-control" id="nome_profissão" placeholder="Profissão" required>
+                                  <div class="invalid-feedback">
+                                    Digite sua Profissão.
+                                  </div>
+                                </div>
+
+                                <div class="col-md-10 mb-2">
+                                  <label for="obs" class="form-label">Observações</label>
+                                  <textarea class="form-control" name="comment" form="usrform">Observações...</textarea>
+                                  <div class="invalid-feedback">
+                                    Observações
+                                  </div>
+                                </div>
+                              </div>
+                              
+
+                              <button class="col-md-2 mb-4 w-100 btn btn-success" type="submit">Salvar</button>
+                              <button class="col-md-2 mb-4 w-100 btn btn-primary" type="submit">Voltar</button>
+                            </form>
+                          </div>
+
                     </div>
+
 
                     <!-- Content Row -->
-
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Exames</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="card shadow mb-4">                                                                           
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nome</th>
-                                                        <th>Exame</th>
-                                                        <th>Status</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Position</th>
-                                                        <th>Office</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>System Architect</td>
-                                                        <td>Edinburgh</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Garrett Winters</td>
-                                                        <td>Accountant</td>
-                                                        <td>Tokyo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ashton Cox</td>
-                                                        <td>Junior Technical Author</td>
-                                                        <td>San Francisco</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Paul Byrd</td>
-                                                        <td>Chief Financial Officer (CFO)</td>
-                                                        <td>New York</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Gloria Little</td>
-                                                        <td>Systems Administrator</td>
-                                                        <td>New York</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Bradley Greer</td>
-                                                        <td>Software Engineer</td>
-                                                        <td>London</td>                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Dai Rios</td>
-                                                        <td>Personnel Lead</td>
-                                                        <td>Edinburgh</td>                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Jenette Caldwell</td>
-                                                        <td>Development Lead</td>
-                                                        <td>New York</td>                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Yuri Berry</td>
-                                                        <td>Chief Marketing Officer (CMO)</td>
-                                                        <td>New York</td>                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Caesar Vance</td>
-                                                        <td>Pre-Sales Support</td>
-                                                        <td>New York</td>                                                        
-                                                    </tr>                                                    
-                                                    <tr>
-                                                        <td>Brenden Wagner</td>
-                                                        <td>Software Engineer</td>
-                                                        <td>San Francisco</td>                                                        
-                                                    </tr>                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Estatísticas de Exames</h6>                                    
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Em Andamento
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Concluídos
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Pendentes
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -622,14 +593,7 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'principal/js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'principal/js/demo/chart-pie-demo.js' %}"></script>
-     
-    <!--DATATABLES-->
-    <!-- Page level plugins -->
-    <script src="{% static 'principal/vendor/datatables/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'principal/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{% static 'principal/js/demo/datatables-demo.js' %}"></script>
 
 </body>
+
 </html>

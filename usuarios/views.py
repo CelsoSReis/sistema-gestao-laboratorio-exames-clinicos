@@ -10,7 +10,11 @@ class CustomLogoutView(LogoutView):
 
 @group_required("Recepção")
 def cadastro_paciente(request):
-    return render(request, "cadastro_paciente.html")
+    return render(request, "recepcao/cadastro_paciente.html")
+
+@group_required("Recepção")
+def cad_paciente(request):
+    return render(request, "recepcao/cad_pacientes.html")
 
 @group_required("Médico")
 def criar_pedido(request):
