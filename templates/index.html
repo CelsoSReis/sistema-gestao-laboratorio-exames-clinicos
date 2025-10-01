@@ -365,6 +365,8 @@
                                 </div>
                             </div>
                         </div>
+                    <!--      <a href="{% url 'cadastro_paciente' %}">Cadastro de Pacientes</a>-->
+                    
 
                         <!-- Exames -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -584,22 +586,22 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body"></div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                </div>
-                {% if user.is_authenticated %}
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Não</button>
+                    {% if user.is_authenticated %}
                     <form method="post" action="{% url 'logout' %}">
                     {% csrf_token %}
                         <button class="btn btn-primary" type="submit"> Sim </button>
                     </form>
                     </p>
                 {% endif %}
+                </div>                
             </div>
         </div>
     </div>
@@ -630,5 +632,4 @@
     <script src="{% static 'principal/js/demo/datatables-demo.js' %}"></script>
 
 </body>
-
 </html>
