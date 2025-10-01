@@ -22,7 +22,8 @@
 </head>
 
 <body id="page-top">
-
+{% block 'conteudo' %}
+            
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -605,7 +606,7 @@
             </div>
         </div>
     </div>
-
+{% endblock %}
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'principal/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'principal/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
