@@ -345,48 +345,50 @@
 
     
                           <div class="col-md-7 col-lg-10">
-                            <form class="needs-validation" novalidate>
+                            <form method="post" action="{% url 'cad_paciente' %}" class="needs-validation" novalidate>
+                            {% csrf_token %}
+
                               <div class="row g-3">
                                 <div class="col-md-2 mb-2">
                                   <label for="cod" class="form-label">Código</label>
-                                  <input type="text" class="form-control" id="cod" placeholder="" required>
+                                  <input type="text" class="form-control" id="cod" placeholder="">
                                 </div>
 
                                 <div class="col-md-8 mb-2">
-                                  <label for="Nome" class="form-label">Nome</label>
-                                  <input type="text" class="form-control" id="Nome" placeholder="" value="" required>
+                                  <label for="nome_completo" class="form-label">Nome</label>
+                                  <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="" value="" required>
                                   <div class="invalid-feedback">
                                     Digite o nome do paciente.
                                   </div>
                                 </div>
 
                                 <div class="col-md-6 mb-2">
-                                  <label for="Endereco" class="form-label">Endereço</label>
-                                  <input type="text" class="form-control" id="Endereco" placeholder="" value="" required>
+                                  <label for="endereco" class="form-label">Endereço</label>
+                                  <input type="text" class="form-control" id="endereco" name="endereco" placeholder="" value="" required>
                                   <div class="invalid-feedback">
                                     Digite o endereço do paciente.
                                   </div>
                                 </div>
 
                                 <div class="col-md-4 mb-2">
-                                  <label for="Endereco" class="form-label">Complemento</label>
-                                  <input type="text" class="form-control" id="Endereco" placeholder="" value="" required>
+                                  <label for="complemento" class="form-label">Complemento</label>
+                                  <input type="text" class="form-control" id="complemento" name="complemento" placeholder="" value="" required>
                                   <div class="invalid-feedback">
                                     Digite o complemento.
                                   </div>
                                 </div>
 
                                 <div class="col-md-4 mb-2">
-                                  <label for="Bairro" class="form-label">Bairro</label>
-                                  <input type="text" class="form-control" id="Bairro" placeholder="" value="" required>
+                                  <label for="bairro" class="form-label">Bairro</label>
+                                  <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" value="" required>
                                   <div class="invalid-feedback">
                                     Digite o Bairro.
                                   </div>
                                 </div>
 
                                 <div class="col-md-6 mb-2">
-                                  <label for="Cidade" class="form-label">Cidade</label>
-                                  <input type="text" class="form-control" id="Cidade" placeholder="" value="" required>
+                                  <label for="cidade" class="form-label">Cidade</label>
+                                  <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" value="" required>
                                   <div class="invalid-feedback">
                                     Digite a cidade do paciente.
                                   </div>
@@ -394,22 +396,22 @@
 
                                 <div class="col-md-4 mb-2">
                                   <label for="cep" class="form-label">CEP</label>
-                                  <input type="text" class="form-control" id="cep" placeholder="" required>
+                                  <input type="text" class="form-control" id="cep" name="cep" placeholder="" required>
                                 </div>
 
                                 <div class="col-md-3 mb-2">
                                   <label for="telefone" class="form-label">Telefone</label>
-                                  <input type="text" class="form-control" id="telefone" placeholder="" required>
+                                  <input type="text" class="form-control" id="telefone" name="telefone" placeholder="" required>
                                 </div>
 
                                 <div class="col-md-3 mb-2">
                                   <label for="celular" class="form-label">Celular</label>
-                                  <input type="text" class="form-control" id="celular" placeholder="" required>
+                                  <input type="text" class="form-control" id="celular" name="celular" required>
                                 </div>
 
                                 <div class="col-5">
                                   <label for="email" class="form-label">Email <span class="text-muted">(Opicional)</span></label>
-                                  <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com">
+                                  <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@exemplo.com">
                                   <div class="invalid-feedback">
                                     Insira um e-mail válido.
                                   </div>
@@ -417,31 +419,34 @@
 
                                 <div class="col-md-3 mb-2">
                                   <label for="rg" class="form-label">RG</label>
-                                  <input type="text" class="form-control" id="rg" placeholder="" required>
+                                  <input type="text" class="form-control" id="rg" name="rg" placeholder="" required>
                                 </div>
 
                                 <div class="col-md-2 mb-2">
-                                  <label for="orgao" class="form-label">Orgão Exp</label>
-                                  <input type="text" class="form-control" id="orgao" placeholder="" required>
+                                  <label for="orgao_exp" class="form-label">Orgão Exp</label>
+                                  <input type="text" class="form-control" id="orgao_exp" name="orgao_exp" placeholder="" required>
                                 </div>
 
                                 <div class="col-md-4 mb-2">
                                   <label for="cpf" class="form-label">CPF</label>
-                                  <input type="text" class="form-control" id="cpf" placeholder="" required>
+                                  <input type="text" class="form-control" id="cpf" name="cpf" placeholder="" required>
                                 </div>
 
                                 <div class="col-md-3 mb-2">
-                                  <label for="nasc" class="form-label">Nascimento</label>
-                                  <input type="date" class="form-control" id="nasc" placeholder="" required>
+                                  <label for="data_nascimento" class="form-label">Nascimento</label>
+                                  <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="" required>
                                 </div>
 
                                 <div class="col-md-3">
                                   <label for="cor" class="form-label mb-2">Cor/Raça</label>
                                   <br>
-                                  <select class="form-control" id="cor" required>
+                                  <select class="form-control" id="cor" name="cor" required>
                                     <option value="">Selecione...</option>
-                                    <option>Branca</option>
-                                    <option>Parda</option>
+                                    <option value="branca">Branca</option>
+                                    <option value="parda">Parda</option>
+                                    <option value="preta">Preta</option>
+                                    <option value="amarela">Amarela</option>
+                                    <option value="indigena">Indígena</option>
                                   </select>
                                   <div class="invalid-feedback">
                                     Selecione a cor/raça.
@@ -450,7 +455,7 @@
 
                                 <div class="col-md-10 mb-2">
                                   <label for="nome_mae" class="form-label">Nome da Mãe</label>
-                                  <input type="text" class="form-control" id="nome_mae" placeholder="Nome da mãe" required>
+                                  <input type="text" class="form-control" id="nome_mae" name="nome_mae" placeholder="Nome da mãe" required>
                                   <div class="invalid-feedback">
                                     Digite o nome da mãe.
                                   </div>
@@ -458,54 +463,66 @@
 
                                 <div class="col-md-10 mb-2">
                                   <label for="nome_pai" class="form-label">Nome do Pai</label>
-                                  <input type="text" class="form-control" id="nome_pai" placeholder="Nome do pai" required>
+                                  <input type="text" class="form-control" id="nome_pai" name="nome_pai" placeholder="Nome do pai" required>
                                   <div class="invalid-feedback">
                                     Digite o nome da mãe.
                                   </div>
                                 </div>
                                 
                                 <div class="col-md-3 mb-2">
-                                  <label for="cor" class="form-label mb-2">Estado Civil</label>
+                                  <label for="estado_civil" class="form-label mb-2">Estado Civil</label>
                                   <br>
-                                  <select class="form-control" id="cor" required>
+                                  <select class="form-control" id="estado_civil" name="estado_civil">
                                     <option value="">Selecione...</option>
-                                    <option>Solteiro(a)</option>
-                                    <option>Casado(a)</option>
-                                    <option>Divorciado(a)</option>
-                                    <option>Viúvo(a)</option>
+                                    <option value="solteiro">Solteiro(a)</option>
+                                    <option value="casado">Casado(a)</option>
+                                    <option value="divorciado">Divorciado(a)</option>
+                                    <option value="viuvo">Viúvo(a)</option>
                                   </select>
                                   <div class="invalid-feedback">
                                     Selecione o estado civil.
                                   </div>
                                 </div>
 
-
                                 <div class="col-md-3 mb-2">
-                                  <label for="cor" class="form-label mb-2">Escolaridade</label>
+                                  <label for="escolaridade" class="form-label mb-2">Escolaridade</label>
                                   <br>
-                                  <select class="form-control" id="cor" required>
+                                  <select class="form-control" id="escolaridade" name="escolaridade">
                                     <option value="">Selecione...</option>
-                                    <option>Ensino Fundamental</option>
-                                    <option>Ensino Médio</option>
-                                    <option>Ensino Superior</option>
-                                    <option>Ensino Superior Incompleto</option>
+                                    <option value="ensinoFundamental">Ensino Fundamental</option>
+                                    <option value="ensinoMedio">Ensino Médio</option>
+                                    <option value="ensinoSuperior">Ensino Superior</option>
+                                    <option value="superiorIncompleto">Ensino Superior Incompleto</option>
                                   </select>
                                   <div class="invalid-feedback">
                                     Selecione a escolaridade.
                                   </div>
                                 </div>
 
+                                <div class="col-md-3 mb-2">
+                                  <label for="plano_convenio" class="form-label mb-2">Plano de Saúde</label>
+                                  <br>
+                                  <select class="form-control" id="plano_convenio" name="plano_convenio" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="ipasgo">Ipasgo</option>
+                                    <option value="unimed">Unimed</option>
+                                  </select>
+                                  <div class="invalid-feedback">
+                                    Selecione o plano de saúde.
+                                  </div>
+                                </div>
+
                                 <div class="col-md-10 mb-2">
-                                  <label for="nome_profissão" class="form-label">Profissão</label>
-                                  <input type="text" class="form-control" id="nome_profissão" placeholder="Profissão" required>
+                                  <label for="profissao" class="form-label">Profissão</label>
+                                  <input type="text" class="form-control" id="profissao" name="profissao" placeholder="Profissão" required>
                                   <div class="invalid-feedback">
                                     Digite sua Profissão.
                                   </div>
                                 </div>
 
                                 <div class="col-md-10 mb-2">
-                                  <label for="obs" class="form-label">Observações</label>
-                                  <textarea class="form-control" name="comment" form="usrform">Observações...</textarea>
+                                  <label for="observacoes" class="form-label">Observações</label>
+                                  <textarea class="form-control" id="observacoes" name="observacoes" form="usrform">Observações...</textarea>
                                   <div class="invalid-feedback">
                                     Observações
                                   </div>

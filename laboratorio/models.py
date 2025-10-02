@@ -19,7 +19,12 @@ class Paciente(models.Model):
     escolaridade_CHOICES = [
         ("ensinoFundamental", "Ensino Fundamental"),
         ("ensinoMedio", "Ensino Médio"),
-        ("superior", "Superior"),
+        ("ensinoSuperior", "Ensino Superior"),
+        ("superiorIncompleto", "Ensino Superior Incompleto"),
+    ]
+    plano_convenio_CHOICES = [
+        ("unimed", "Unimed"),
+        ("ipasgo", "IPASGO"),
     ]
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome_completo = models.CharField(max_length=255)
@@ -40,8 +45,9 @@ class Paciente(models.Model):
     nome_pai = models.CharField(max_length=255, blank=True)
     estado_civil = models.CharField(max_length=20, choices=estado_civil_CHOICES, blank=True)
     escolaridade = models.CharField(max_length=50, choices=escolaridade_CHOICES, blank=True)
+    plano_convenio = models.CharField(max_length=50, choices=plano_convenio_CHOICES, blank=True)
     profissao = models.CharField(max_length=255, blank=True)
-    observacoes = models.TextField(blank=True)
+    observacoes = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.nome_completo

@@ -22,7 +22,6 @@
 </head>
 
 <body id="page-top">
-{% block 'conteudo' %}
             
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -169,13 +168,13 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/chat.png" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="{% static 'geral/img/chat.png'%}" alt="...">
                 <a class="btn btn-success btn-sm" href="#">Chat Interno</a>
             </div>
 
         </ul>
         <!-- End of Sidebar -->
-
+        
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -276,7 +275,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="{% static 'geral/img/undraw_profile_2.svg'%}"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -287,7 +286,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="{% static 'geral/img/undraw_profile_2.svg'%}"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -309,7 +308,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Celso Reis</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{% static 'geral/img/undraw_profile_2.svg'%}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -338,7 +337,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                {% block 'conteudo' %}
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -556,7 +555,7 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
+            {% endblock %}
             </div>
             <!-- End of Main Content -->
 
@@ -606,7 +605,7 @@
             </div>
         </div>
     </div>
-{% endblock %}
+
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'principal/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'principal/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

@@ -9,9 +9,9 @@ def index(request):
     return render(request, "index.html")
 
 urlpatterns = [
+    path("", index, name="index"),
     path("login/", CustomLoginView.as_view(), name="login"),
     path("logout/", CustomLogoutView.as_view(), name="logout"),
-    path("", index, name="index"),
-    path("paciente/", views.cadastro_paciente, name="cadastro_paciente"),
-    path("cadastro/", views.cad_paciente, name="cad_paciente"),
+    #path("paciente/", views.cadastro_paciente, name="cadastro_paciente"),
+    #path("cadastro/", views.cad_paciente, name="cad_paciente"),
 ]
