@@ -26,7 +26,7 @@ class Paciente(models.Model):
         ("unimed", "Unimed"),
         ("ipasgo", "IPASGO"),
     ]
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True)
     nome_completo = models.CharField(max_length=255)
     cpf = models.CharField(max_length=14, unique=True)
     data_nascimento = models.DateField()

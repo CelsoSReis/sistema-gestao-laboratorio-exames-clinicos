@@ -16,4 +16,5 @@ urlpatterns = [
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("", include("usuarios.urls")),  # login/logout
     path("lab/", include("laboratorio.urls")),  # <-- aqui 'lab' é o nome do seu app
+    path("at/", include("atendimento.urls")),  # <-- aqui 'at' é o nome do seu app
 ]
