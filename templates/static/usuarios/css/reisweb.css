@@ -1,0 +1,129 @@
+/*LOGIN REISWEB*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0F5B53; /* Fundo cinza claro */
+}
+
+/* Estilo do contêiner principal para o layout de duas colunas */
+.login-card-container {
+    max-width: 800px; /* Largura máxima do "cartão" completo */
+    width: 50%;
+    background-color: #0A4742;
+    border-radius: 0.8rem; /* Bordas um pouco mais arredondadas */
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    overflow: hidden; /* Importante para o border-radius funcionar com a imagem */
+    display: flex; /* Para garantir que as colunas ocupem a altura total */
+    font-size: 0.9rem;
+}
+
+/* Coluna da imagem */
+.login-image-col {
+    position: relative;
+    background-image: url('../img/img-login.jpg'); /* Sua imagem aqui */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px; /* Altura mínima para a imagem em desktop */
+    display: flex;
+    align-items: center;
+    
+    /* PROPRIEDADES CHAVE REFORÇADAS: */
+    flex-direction: column; /* Organiza os itens de cima para baixo */
+    justify-content: flex-end; /* ALINHA O CONTEÚDO AO FINAL (rodapé) */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Degradê sobre a imagem na coluna esquerda */
+.login-image-col::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 50, 50, 0.7), rgba(0, 50, 50, 0.9)); /* Degradê vertical */
+    z-index: 1; /* Garante que o degradê fique sobre a imagem */
+}
+/* Ajustes para a imagem da logo dentro da coluna da imagem */
+.login-image-col .logo-overlay {
+    position: relative;
+    z-index: 2; /* Garante que a logo fique sobre o degradê */
+    text-align: center;
+    color: #fff;
+}
+.login-image-col .logo-overlay img {
+    max-width: 120px; /* Tamanho da logo na imagem */
+    filter: brightness(1.2) drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Leve brilho e sombra para destacar */
+}
+.login-image-col .logo-overlay h2 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Coluna do formulário */
+.login-form-col {
+    padding: 3rem; /* Espaçamento interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente o formulário */
+}
+
+/* Estilos customizados para botões e links - Cores do exemplo 'Expresso' */
+.btn-custom-primary {
+    background-color: #00897B; /* Azul do Expresso */
+    border-color: #00897B;
+    color: #fff;
+    font-size: 0.9rem;
+}
+.btn-custom-primary:hover {
+    background-color: #1565c0; /* Azul mais escuro no hover */
+    border-color: #1565c0;
+}
+
+.text-custom-link {
+    color: #00897B; /* Cor do link */
+}
+.text-custom-link:hover {
+    color: #1565c0;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.2rem; /* Menos margem entre label e input */
+
+}
+
+/* Estilos específicos para os links de "Criar conta" e "Fale conosco" */
+.bottom-links {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Responsividade: Empilhar colunas em telas menores */
+@media (max-width: 768px) {
+    .login-card-container {
+        flex-direction: column; /* Coloca a imagem e o formulário em pilha */
+        width: 95%;
+        max-width: 500px;
+    }
+    .login-image-col {
+        min-height: 250px; /* Altura menor para a imagem em mobile */
+    }
+    .login-form-col {
+        padding: 2rem;
+    }
+    .bottom-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
