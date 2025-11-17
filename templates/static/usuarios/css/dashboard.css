@@ -1,0 +1,85 @@
+body {
+      background-color: #0A4742;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #0F5B53;
+    }
+
+    .navbar-brand img {
+      height: 35px;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    /*menus */
+    .main-content-1 {
+      flex: 1;
+      display: block;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .main-content img {
+      width: 100px;
+      max-width: 80%;
+      margin-bottom: 20px;
+    }
+
+    .main-content h1 {
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .main-content span {
+      color: #007bff;
+      font-weight: 700;
+    }
+
+    footer {
+      background-color: #0A4742;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      color: #999;
+    }
+/*atendimento menu*/
+
+.tile-box {
+  width: 150px;
+  height: 130px;
+  background: #00a3a3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  color: white;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: .2s;
+}
+.tile-box:hover {
+filter: brightness(1.1);
+}
+.breadcrumb-wrapper {
+margin-top: 10px;
+}
