@@ -1,0 +1,112 @@
+body {
+      background-color: #0A4742;
+      color: #fff;
+    }
+
+.stepper .step {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  width: 16%;
+}
+.stepper .step .circle {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  background: #6c757d;
+  display: inline-block;
+  color: white;
+}
+.stepper .step.active .circle {
+  background: #0d6efd;
+}
+.stepper .step.completed .circle {
+  background: #198754;
+}
+.stepper .step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background-color: #6c757d;
+  z-index: -1;
+}
+.card-dark {
+  background-color: #0b4d47;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+}
+.search-input input {
+  background-color: #fff;
+  border: 1px solid #555;
+  color: #555;
+}
+.search-input input::placeholder {
+  color: #b3aeae;
+}
+.search-input input:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+.search-buttons button {
+  border-radius: 6px;
+}
+/* DATA TABLE*/
+.form-control {
+  background: #2b2b2b;
+  border: 1px solid #444;
+  color: white;
+}
+/* AUTOCOMPLETE */
+#autocomplete-list {
+    background: #2b2b2b;
+    border: 1px solid #555;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+}
+#autocomplete-list div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+}
+#autocomplete-list div:hover {
+    background: #3b3b3b;
+}
+.search-wrapper {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+}
+/*DATATABLE ESCONDE SEARCH*/
+.dataTables_filter {
+    display: none !important;
+}
+/*CORES DATATABLE*/
+table.dataTable tbody td{
+    background-color: #0F5B53 !important; /* Exemplo de tom escuro */
+    color: #fff !important;
+}
+table.dataTable thead th {
+    background-color: #0A2D2E !important;
+    color: #fff !important;
+}
+
+ /* Hover linha inteira */
+table.dataTable tbody tr:hover {
+    background-color: rgba(67, 155, 64, 0.377) !important;
+    cursor: pointer;
+}
+
+/* Evita hover individual por célula */
+table.dataTable tbody tr:hover td {
+    background-color: transparent !important;
+}
+/*TAMANHO FIXO BUTTONS*/
+.btn-fixed {
+    width: 200px;
+}

@@ -28,7 +28,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Atendimento</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Novo Atendimento</a></li>
+              <li><a class="dropdown-item" href="{% url 'recepcao_atendimento' %}">Novo Atendimento</a></li>
               <li><a class="dropdown-item" href="#">Histórico </a></li>
             </ul>
           </li>
@@ -99,20 +99,20 @@
 </div>
 
 
-
+{% block 'conteudo' %}
   <main class="main-content">
     <img src="{% static 'usuarios/images/atendimento.png'%}" alt="Ilustração Médicos">
     <h1 class="mb-4">Bem vindo ao <span>LClab</span><br>Tecnologia que cuida da <span>Saúde</span></h1>
-    <button type="button" class="btn btn-success fw-bold"><i class="bi bi-box-arrow-in-right"></i> Iniciar Atendimento</button>
+    <a href="{% url 'recepcao_atendimento' %}"class=" btn btn-success fw-bold"><i class="bi bi-box-arrow-in-right"></i> Iniciar Atendimento</a>
   </main>
+{% endblock %}
 
   <footer>
     <div>
       <span>© 2024 <strong>LCLAB</strong></span>
-      <span class="ms-3">reiswebsystem: 1.0</span>
     </div>
     <div>
-      <span>LC LAB</span>
+      <span class="ms-3">reiswebsystem: 1.0</span>
     </div>
   </footer>
 

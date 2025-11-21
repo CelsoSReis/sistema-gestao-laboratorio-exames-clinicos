@@ -83,3 +83,7 @@ filter: brightness(1.1);
 .breadcrumb-wrapper {
 margin-top: 10px;
 }
+
+a {
+  text-decoration: none;
+}

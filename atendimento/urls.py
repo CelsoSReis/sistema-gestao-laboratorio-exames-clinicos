@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     # Rotas da API
 
-    # Rota para o formulário de cadastro
+    # Rota para o formulário atendimento
     path("atendimento/", views.iniciar_atendimento, name="iniciar_atendimento"),
+    path("recepcao/", views.recepcao_atendimento, name="recepcao_atendimento"),
 ]
