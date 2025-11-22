@@ -110,3 +110,47 @@ table.dataTable tbody tr:hover td {
 .btn-fixed {
     width: 200px;
 }
+
+/*FORMS CADASTRO DE PACIENTES*/
+
+.form-section {
+        background: #0b4d47;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .form-control, .form-select {
+        background-color: #fff;
+        color: black;
+        border: 1px solid #375b5c;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #56d6d6;
+        box-shadow: none;
+    }
+
+    .btn-custom {
+        background-color: #0b7285;
+        color: white;
+        border: none;
+    }
+
+    .btn-custom:hover {
+        background-color: #0e99ac;
+    }
+
+    .btn-outline-custom {
+        border: 1px solid #0b7285;
+        color: #0b7285;
+    }
+
+    .btn-outline-custom:hover {
+        background-color: #0b7285;
+        color: white;
+    }

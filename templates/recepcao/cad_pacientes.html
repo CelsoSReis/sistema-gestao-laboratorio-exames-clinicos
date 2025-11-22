@@ -1,616 +1,222 @@
+{% extends "index.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-BR">
 
-<head>
+{% block 'head' %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LClab - Novo Atendimento</title>
+  <link rel="stylesheet" href="{% static 'usuarios/css/atendimento.css' %}">
+  <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+{% endblock %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Recepção - LClab</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="{% static 'principal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="{% static 'principal/css/sb-admin-2.min.css' %}" rel="stylesheet">
-    {% block 'head' %}{% endblock %}
-
-</head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-solid fa-syringe"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">LClab</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">
-                    <i class="fas fa-solid fa-clipboard"></i>
-                    <span>Home</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading 
-            <div class="sidebar-heading">
-                Menu
-            </div>
-            -->
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-solid fa-syringe"></i>
-                    <span>Exames</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Exames:</h6>
-                        <a class="collapse-item" href="#">Recepção</a>
-                        <a class="collapse-item" href="#">Agendamento para Coleta</a>
-                        <a class="collapse-item" href="#">Orçamento</a>
-                        <a class="collapse-item" href="#">Resultado</a>
-                        <a class="collapse-item" href="#">Laudos</a>
-                        <a class="collapse-item" href="#">Gerar Etiqueta</a>
-                        <a class="collapse-item" href="#">Impressão e entrega</a>
-                        <a class="collapse-item" href="#">Solicitação para Recoleta</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePacientes"
-                    aria-expanded="true" aria-controls="collapsePacientes">
-                    <i class="fas fa-solid fa-users"></i>
-                    <span>Pacientes</span>
-                </a>
-                <div id="collapsePacientes" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Pacientes:</h6>
-                        <a class="collapse-item" href="{% url 'cad_paciente' %}">Cadastro de Paciente</a>
-                        <a class="collapse-item" href="{% url 'cadastro_paciente' %}">Buscar Paciente</a>
-                        <a class="collapse-item" href="#">Agendamento para coleta</a>
-                        <a class="collapse-item" href="#">Resultados</a>
-                    </div>
-                </div>
-            </li>           
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedico"
-                    aria-expanded="true" aria-controls="collapseMedico">
-                    <i class="fas fa-solid fa-stethoscope"></i>
-                    <span>Biomédico</span>
-                </a>
-                <div id="collapseMedico" class="collapse" aria-labelledby="headingMedico"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Biomédico:</h6>
-                        <a class="collapse-item" href="#">Laudo</a>
-                        <a class="collapse-item" href="#">Solicitações para Recoleta</a>
-                        <a class="collapse-item" href="#">Pacientes</a>
-                    </div>
-                </div>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinan"
-                    aria-expanded="true" aria-controls="collapseFinan">
-                    <i class="fas fa-solid fa-dollar-sign"></i>
-                    <span>Financeiro</span>
-                </a>
-                <div id="collapseFinan" class="collapse" aria-labelledby="headingFinan" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Financeiro:</h6>
-                        <a class="collapse-item" href="#">Fluxo de Caixa</a>
-                        <a class="collapse-item" href="#">Dados Faturamento</a>
-                        <a class="collapse-item" href="#">Gerenciar Faturas</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                <i class="fas fa-solid fa-boxes"></i>
-                <span>Estoque</span></a>
-            </li>
+{% block 'conteudo' %}
 
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-solid fa-paste"></i>
-                    <span>Relatórios</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Relatórios:</h6>
-                        <a class="collapse-item" href="#">Cadastros</a>
-                        <a class="collapse-item" href="#">Exames</a>
-                        <a class="collapse-item" href="#">Financeiro</a>
-                        <a class="collapse-item" href="#">Estoque</a>
-                    </div>
-                </div>
-            </li>
+<div class="container py-4">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+<!-- TÍTULO -->
+    <h3 class="mb-4 fw-bold">Cadastro de Paciente</h3>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    <!-- IDENTIFICAÇÃO -->
+    <div class="form-section">
+        <h5 class="mb-3">Dados Pessoais</h5>
+
+        <div class="row g-3">
+
+           <!-- <div class="col-md-1 d-flex align-items-center">
+                <img src="https://via.placeholder.com/70" class="rounded-circle border border-secondary" height="100" width="100">
+            </div>-->
+
+            <div class="col-md-5">
+                <label class="form-label">Nome *</label>
+                <input type="text" class="form-control" placeholder="Nome completo...">
             </div>
 
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/chat.png" alt="...">
-                <a class="btn btn-success btn-sm" href="#">Chat Interno</a>
+            <div class="col-md-4">
+                <label class="form-label">Nome Social</label>
+                <input type="text" class="form-control" placeholder="Nome social">
             </div>
 
-        </ul>
-        <!-- End of Sidebar -->
+            <div class="col-md-3">
+                <label class="form-label">Código</label>
+                <input type="text" class="form-control">
+            </div>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+            <div class="col-md-3">
+                <label class="form-label">Mãe</label>
+                <input type="text" class="form-control" placeholder="Nome da mãe">
+            </div>
 
-            <!-- Main Content -->
-            <div id="content">
+            <div class="col-md-3">
+                <label class="form-label">Pai</label>
+                <input type="text" class="form-control" placeholder="Nome do pai">
+            </div>
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <div class="col-md-3">
+                <label class="form-label">Nascimento</label>
+                <input type="date" class="form-control" placeholder="Nascimento">
+            </div>
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+            <div class="col-md-3">
+                <label class="form-label">Sexo</label>
+                <select class="form-select">
+                    <option>Selecione</option>
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                </select>
+            </div>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <!--<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>-->
-                        </div>
-                    </form>
+        </div>
+    </div>
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+    <!-- CONTATO -->
+    <div class="form-section">
+        <h5 class="mb-3">Contato</h5>
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Celular</label>
+                <input type="text" class="form-control" placeholder="(00) 00000-0000">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Telefone</label>
+                <input type="text" class="form-control" placeholder="(00) 0000-0000">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="exemplo@email.com">
+            </div>
+        </div>
+    </div>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">1</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Notificações
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">12 de Dezembro, 2024</div>
-                                        <span class="font-weight-bold">Agendamento de coleta</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Mostrar mais...</a>
-                            </div>
-                        </li>
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">2</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Messagens
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Boa Tarde!</div>
-                                        <div class="small text-gray-500">Sumara · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Teste de mensagens </div>
-                                        <div class="small text-gray-500">Celso · 2d</div>
-                                    </div>
-                                </a>
-                                
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Todas as Mensagens</a>
-                            </div>
-                        </li>
+    <!-- ENDEREÇO -->
+    <div class="form-section">
+        <h5 class="mb-3">Endereço</h5>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">CEP</label>
+                <input type="text" class="form-control" placeholder="00000-000">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Estado</label>
+                <select class="form-select"><option>Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="EX">Estrangeiro</option>
+                    
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Município</label>
+                <input type="text" class="form-control" placeholder="Município">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Cód. IBGE</label>
+                <input type="text" class="form-control" placeholder="0000000">
+            </div>
 
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Celso Reis</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configurações
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Sair
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End of Topbar -->
+            <div class="col-md-3">
+                <label class="form-label">Tipo Logradouro</label>
+                <select class="form-select">
+                    <option>Rua</option>
+                    <option>Avenida</option>
+                    <option>Travessa</option>
+                </select>
+            </div>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+            <div class="col-md-5">
+                <label class="form-label">Logradouro</label>
+                <input type="text" class="form-control" placeholder="Logradouro">
+            </div>
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h2 class="h3 mb-0 text-gray-800">Novo Paciente</h2>
-                    </div>
+            <div class="col-md-2">
+                <label class="form-label">Nº</label>
+                <input type="text" class="form-control" placeholder="0">
+            </div>
 
-                    <!-- Content Row -->
-                    <div class="row">
+            <div class="col-md-2">
+                <label class="form-label">Bairro</label>
+                <input type="text" class="form-control" placeholder="Nome do bairro">
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label">Complemento</label>
+                <input type="text" class="form-control"placeholder="Complemento...">
+            </div>
+        </div>
+    </div>
+
+    <!-- DOCUMENTOS -->
+    <div class="form-section">
+        <h5 class="mb-3">Documentos</h5>
+
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">CPF</label>
+                <input type="text" class="form-control" placeholder="000.000.000-00">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">RG</label>
+                <input type="text" class="form-control" placeholder="0000000">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">CNS (Cartão Nacional da Saúde/ SUS)</label>
+                <input type="text" class="form-control" placeholder="Número do CNS...">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Passaporte</label>
+                <input type="text" class="form-control" placeholder="CS000000">
+            </div>
+        </div>
+    </div>
+
+    <!-- OBSERVAÇÕES -->
+    <div class="form-section">
+        <h5 class="mb-3">Observações</h5>
+        <textarea class="form-control" rows="4" placeholder="Histórico do paciente..."></textarea>
+    </div>
+
+    <!-- BOTÕES -->
+    <div class="d-flex justify-content-end">
+        <a href="{% url 'iniciar_atendimento' %}" class="btn btn-danger me-2">Cancelar</a>
+        <button class="btn btn-success">Próximo</button>
+    </div>
+
+</div>
+
 
     
-                          <div class="col-md-7 col-lg-10">
-                            <form method="post" action="{% url 'cad_paciente' %}" class="needs-validation" novalidate>
-                            {% csrf_token %}
+</div>
 
-                              <div class="row g-3">
-                                <div class="col-md-2 mb-2">
-                                  <label for="cod" class="form-label">Código</label>
-                                  <input type="text" class="form-control" id="cod" placeholder="">
-                                </div>
+  <!-- Scripts -->
 
-                                <div class="col-md-8 mb-2">
-                                  <label for="nome_completo" class="form-label">Nome</label>
-                                  <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="" value="" required>
-                                  <div class="invalid-feedback">
-                                    Digite o nome do paciente.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-6 mb-2">
-                                  <label for="endereco" class="form-label">Endereço</label>
-                                  <input type="text" class="form-control" id="endereco" name="endereco" placeholder="" value="" required>
-                                  <div class="invalid-feedback">
-                                    Digite o endereço do paciente.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-4 mb-2">
-                                  <label for="complemento" class="form-label">Complemento</label>
-                                  <input type="text" class="form-control" id="complemento" name="complemento" placeholder="" value="" required>
-                                  <div class="invalid-feedback">
-                                    Digite o complemento.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-4 mb-2">
-                                  <label for="bairro" class="form-label">Bairro</label>
-                                  <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" value="" required>
-                                  <div class="invalid-feedback">
-                                    Digite o Bairro.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-6 mb-2">
-                                  <label for="cidade" class="form-label">Cidade</label>
-                                  <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" value="" required>
-                                  <div class="invalid-feedback">
-                                    Digite a cidade do paciente.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-4 mb-2">
-                                  <label for="cep" class="form-label">CEP</label>
-                                  <input type="text" class="form-control" id="cep" name="cep" placeholder="" required>
-                                </div>
-
-                                <div class="col-md-3 mb-2">
-                                  <label for="telefone" class="form-label">Telefone</label>
-                                  <input type="text" class="form-control" id="telefone" name="telefone" placeholder="" required>
-                                </div>
-
-                                <div class="col-md-3 mb-2">
-                                  <label for="celular" class="form-label">Celular</label>
-                                  <input type="text" class="form-control" id="celular" name="celular" required>
-                                </div>
-
-                                <div class="col-5">
-                                  <label for="email" class="form-label">Email <span class="text-muted">(Opicional)</span></label>
-                                  <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@exemplo.com">
-                                  <div class="invalid-feedback">
-                                    Insira um e-mail válido.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-3 mb-2">
-                                  <label for="rg" class="form-label">RG</label>
-                                  <input type="text" class="form-control" id="rg" name="rg" placeholder="" required>
-                                </div>
-
-                                <div class="col-md-2 mb-2">
-                                  <label for="orgao_exp" class="form-label">Orgão Exp</label>
-                                  <input type="text" class="form-control" id="orgao_exp" name="orgao_exp" placeholder="" required>
-                                </div>
-
-                                <div class="col-md-4 mb-2">
-                                  <label for="cpf" class="form-label">CPF</label>
-                                  <input type="text" class="form-control" id="cpf" name="cpf" placeholder="" required>
-                                </div>
-
-                                <div class="col-md-3 mb-2">
-                                  <label for="data_nascimento" class="form-label">Nascimento</label>
-                                  <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="" required>
-                                </div>
-
-                                <div class="col-md-3">
-                                  <label for="cor" class="form-label mb-2">Cor/Raça</label>
-                                  <br>
-                                  <select class="form-control" id="cor" name="cor" required>
-                                    <option value="">Selecione...</option>
-                                    <option value="branca">Branca</option>
-                                    <option value="parda">Parda</option>
-                                    <option value="preta">Preta</option>
-                                    <option value="amarela">Amarela</option>
-                                    <option value="indigena">Indígena</option>
-                                  </select>
-                                  <div class="invalid-feedback">
-                                    Selecione a cor/raça.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-10 mb-2">
-                                  <label for="nome_mae" class="form-label">Nome da Mãe</label>
-                                  <input type="text" class="form-control" id="nome_mae" name="nome_mae" placeholder="Nome da mãe" required>
-                                  <div class="invalid-feedback">
-                                    Digite o nome da mãe.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-10 mb-2">
-                                  <label for="nome_pai" class="form-label">Nome do Pai</label>
-                                  <input type="text" class="form-control" id="nome_pai" name="nome_pai" placeholder="Nome do pai" required>
-                                  <div class="invalid-feedback">
-                                    Digite o nome da mãe.
-                                  </div>
-                                </div>
-                                
-                                <div class="col-md-3 mb-2">
-                                  <label for="estado_civil" class="form-label mb-2">Estado Civil</label>
-                                  <br>
-                                  <select class="form-control" id="estado_civil" name="estado_civil">
-                                    <option value="">Selecione...</option>
-                                    <option value="solteiro">Solteiro(a)</option>
-                                    <option value="casado">Casado(a)</option>
-                                    <option value="divorciado">Divorciado(a)</option>
-                                    <option value="viuvo">Viúvo(a)</option>
-                                  </select>
-                                  <div class="invalid-feedback">
-                                    Selecione o estado civil.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-3 mb-2">
-                                  <label for="escolaridade" class="form-label mb-2">Escolaridade</label>
-                                  <br>
-                                  <select class="form-control" id="escolaridade" name="escolaridade">
-                                    <option value="">Selecione...</option>
-                                    <option value="ensinoFundamental">Ensino Fundamental</option>
-                                    <option value="ensinoMedio">Ensino Médio</option>
-                                    <option value="ensinoSuperior">Ensino Superior</option>
-                                    <option value="superiorIncompleto">Ensino Superior Incompleto</option>
-                                  </select>
-                                  <div class="invalid-feedback">
-                                    Selecione a escolaridade.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-3 mb-2">
-                                  <label for="plano_convenio" class="form-label mb-2">Plano de Saúde</label>
-                                  <br>
-                                  <select class="form-control" id="plano_convenio" name="plano_convenio" required>
-                                    <option value="">Selecione...</option>
-                                    <option value="ipasgo">Ipasgo</option>
-                                    <option value="unimed">Unimed</option>
-                                  </select>
-                                  <div class="invalid-feedback">
-                                    Selecione o plano de saúde.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-10 mb-2">
-                                  <label for="profissao" class="form-label">Profissão</label>
-                                  <input type="text" class="form-control" id="profissao" name="profissao" placeholder="Profissão" required>
-                                  <div class="invalid-feedback">
-                                    Digite sua Profissão.
-                                  </div>
-                                </div>
-
-                                <div class="col-md-10 mb-2">
-                                  <label for="observacoes" class="form-label">Observações</label>
-                                  <textarea class="form-control" id="observacoes" name="observacoes" form="usrform">Observações...</textarea>
-                                  <div class="invalid-feedback">
-                                    Observações
-                                  </div>
-                                </div>
-                              </div>
-                              
-
-                              <button class="col-md-2 mb-4 w-100 btn btn-success" type="submit">Salvar</button>
-                              <button class="col-md-2 mb-4 w-100 btn btn-primary" type="submit">Voltar</button>
-                            </form>
-                          </div>
-
-                    </div>
-
-
-                    <!-- Content Row -->
-                    
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; ReisWeb Sistemas 2025</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body"></div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Não</button>
-                    {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                        <button class="btn btn-primary" type="submit"> Sim </button>
-                    </form>
-                    </p>
-                {% endif %}
-                </div>                
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static 'principal/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'principal/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{% static 'principal/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{% static 'principal/js/sb-admin-2.min.js' %}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{% static 'principal/vendor/chart.js/Chart.min.js' %}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{% static 'principal/js/demo/chart-area-demo.js' %}"></script>
-    <script src="{% static 'principal/js/demo/chart-pie-demo.js' %}"></script>
-
-</body>
-
-</html>
+{% endblock %}
