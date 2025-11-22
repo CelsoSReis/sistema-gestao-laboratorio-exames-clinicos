@@ -39,7 +39,8 @@
         <!--<div id="autocomplete-list"></div>-->
         <div class="search-buttons d-flex justify-content-center">
           <button id="btnBuscar" class="btn btn-primary me-2 btn-sm btn-fixed"><i class="bi bi-search p-1"></i> Buscar Paciente</button>
-          <button class="btn btn-success me-2 btn-sm btn-fixed"><i class="bi bi-person-plus p-1"></i>  Novo Paciente</button>
+          
+          <a href="{% url 'cadastrar_paciente'%}" class="btn btn-success me-2 btn-sm btn-fixed"><i class="bi bi-person-plus p-1"></i> Novo Paciente</a>
           <button class="btn btn-danger btn-sm btn-fixed"><i class="bi bi-arrow-left p-1"></i>  Voltar</button>
         </div>
     </div>
