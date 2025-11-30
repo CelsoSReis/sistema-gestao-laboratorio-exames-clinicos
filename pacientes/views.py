@@ -35,9 +35,9 @@ def salvar_paciente(request):
 
         return redirect("lista_pacientes")
 
-    return redirect("cadastrar_paciente")
+    return redirect("lista_pacientes")
 
 def lista_pacientes(request):
     pacientes = Paciente.objects.all()
-    return render(request, "pacientes/lista.html", {"pacientes": pacientes})
+    return render(request, "recepcao/atendimento.html", {"pacientes": pacientes})
 

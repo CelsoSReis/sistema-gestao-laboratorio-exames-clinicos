@@ -10,13 +10,13 @@
 {% endblock %}
 
 {% block 'conteudo' %}
-
-
 <div class="container py-4">
 
 <!-- TÍTULO -->
     <h3 class="mb-4 fw-bold">Cadastro de Paciente</h3>
 
+    <form action="{% url 'salvar_paciente' %}" method="POST">
+        {% csrf_token %}
     <!-- IDENTIFICAÇÃO -->
     <div class="form-section">
         <h5 class="mb-3">Dados Pessoais</h5>
@@ -29,37 +29,37 @@
 
             <div class="col-md-5">
                 <label class="form-label">Nome *</label>
-                <input type="text" class="form-control" placeholder="Nome completo...">
+                <input type="text" class="form-control" name="nome" placeholder="Nome completo...">
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">Nome Social</label>
-                <input type="text" class="form-control" placeholder="Nome social">
+                <input type="text" class="form-control" name="nome_social" placeholder="Nome social">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Código</label>
-                <input type="text" class="form-control">
+                <input type="text" name="codigo" class="form-control">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Mãe</label>
-                <input type="text" class="form-control" placeholder="Nome da mãe">
+                <input type="text" class="form-control" name="nome_mae" placeholder="Nome da mãe">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Pai</label>
-                <input type="text" class="form-control" placeholder="Nome do pai">
+                <input type="text" class="form-control" name="nome_pai" placeholder="Nome do pai">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Nascimento</label>
-                <input type="date" class="form-control" placeholder="Nascimento">
+                <input type="date" class="form-control" name="nascimento" placeholder="Nascimento">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Sexo</label>
-                <select class="form-select">
+                <select class="form-select" name="sexo">
                     <option>Selecione</option>
                     <option>Masculino</option>
                     <option>Feminino</option>
@@ -76,15 +76,15 @@
         <div class="row g-3">
             <div class="col-md-4">
                 <label class="form-label">Celular</label>
-                <input type="text" class="form-control" placeholder="(00) 00000-0000">
+                <input type="text" class="form-control" name="celular" placeholder="(00) 00000-0000">
             </div>
             <div class="col-md-4">
                 <label class="form-label">Telefone</label>
-                <input type="text" class="form-control" placeholder="(00) 0000-0000">
+                <input type="text" class="form-control" name="telefone" placeholder="(00) 0000-0000">
             </div>
             <div class="col-md-4">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" placeholder="exemplo@email.com">
+                <input type="email" class="form-control" name="email" placeholder="exemplo@email.com">
             </div>
         </div>
     </div>
@@ -96,11 +96,11 @@
         <div class="row g-3">
             <div class="col-md-3">
                 <label class="form-label">CEP</label>
-                <input type="text" class="form-control" placeholder="00000-000">
+                <input type="text" class="form-control" name="cep" placeholder="00000-000">
             </div>
             <div class="col-md-3">
                 <label class="form-label">Estado</label>
-                <select class="form-select"><option>Selecione</option>
+                <select class="form-select" name="estado"><option>Selecione</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
@@ -134,16 +134,16 @@
             </div>
             <div class="col-md-3">
                 <label class="form-label">Município</label>
-                <input type="text" class="form-control" placeholder="Município">
+                <input type="text" class="form-control" name="municipio" placeholder="Município">
             </div>
             <div class="col-md-3">
                 <label class="form-label">Cód. IBGE</label>
-                <input type="text" class="form-control" placeholder="0000000">
+                <input type="text" class="form-control" name="cod_ibge" placeholder="0000000">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Tipo Logradouro</label>
-                <select class="form-select">
+                <select class="form-select" name="tipo_logradouro">
                     <option>Rua</option>
                     <option>Avenida</option>
                     <option>Travessa</option>
@@ -152,22 +152,22 @@
 
             <div class="col-md-5">
                 <label class="form-label">Logradouro</label>
-                <input type="text" class="form-control" placeholder="Logradouro">
+                <input type="text" class="form-control" name="logradouro" placeholder="Logradouro">
             </div>
 
             <div class="col-md-2">
                 <label class="form-label">Nº</label>
-                <input type="text" class="form-control" placeholder="0">
+                <input type="text" class="form-control" name="numero_rua" placeholder="0">
             </div>
 
             <div class="col-md-2">
                 <label class="form-label">Bairro</label>
-                <input type="text" class="form-control" placeholder="Nome do bairro">
+                <input type="text" class="form-control" name="bairro" placeholder="Nome do bairro">
             </div>
 
             <div class="col-md-12">
                 <label class="form-label">Complemento</label>
-                <input type="text" class="form-control"placeholder="Complemento...">
+                <input type="text" class="form-control" name="complemento" placeholder="Complemento...">
             </div>
         </div>
     </div>
@@ -179,22 +179,22 @@
         <div class="row g-3">
             <div class="col-md-3">
                 <label class="form-label">CPF</label>
-                <input type="text" class="form-control" placeholder="000.000.000-00">
+                <input type="text" class="form-control" name="cpf" placeholder="000.000.000-00">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">RG</label>
-                <input type="text" class="form-control" placeholder="0000000">
+                <input type="text" class="form-control" name="rg" placeholder="0000000">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">CNS (Cartão Nacional da Saúde/ SUS)</label>
-                <input type="text" class="form-control" placeholder="Número do CNS...">
+                <input type="text" class="form-control" name="cns" placeholder="Número do CNS...">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Passaporte</label>
-                <input type="text" class="form-control" placeholder="CS000000">
+                <input type="text" class="form-control" name="passaporte" placeholder="CS000000">
             </div>
         </div>
     </div>
@@ -202,12 +202,12 @@
     <!-- OBSERVAÇÕES -->
     <div class="form-section">
         <h5 class="mb-3">Observações</h5>
-        <textarea class="form-control" rows="4" placeholder="Histórico do paciente..."></textarea>
+        <textarea class="form-control" rows="4" name="observacoes" placeholder="Histórico do paciente..."></textarea>
     </div>
 
     <!-- BOTÕES -->
     <div class="d-flex justify-content-end">
-        <a href="{% url 'iniciar_atendimento' %}" class="btn btn-danger me-2">Cancelar</a>
+        <a href="{% url 'lista_pacientes' %}" class="btn btn-danger me-2">Cancelar</a>
         <button class="btn btn-success">Salvar</button>
     </div>
 

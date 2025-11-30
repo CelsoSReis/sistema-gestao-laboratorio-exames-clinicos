@@ -4,5 +4,5 @@ from django.shortcuts import render
 def recepcao_atendimento(request):
     return render(request, "recepcao/dashboard_recepcionista.html")
 
-def iniciar_atendimento(request):
-    return render(request, "recepcao/atendimento.html")
+#def iniciar_atendimento(request):
+   # return render(request, "recepcao/atendimento.html")

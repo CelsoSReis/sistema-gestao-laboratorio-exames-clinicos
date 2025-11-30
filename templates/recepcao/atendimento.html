@@ -45,6 +45,7 @@
         </div>
     </div>
     <!-- 📍 TABELA -->
+     {% if pacientes %}
     <table id="tabelaMembros" class="table table-dark table-striped text-center">
         <thead>
             <tr>
@@ -57,32 +58,23 @@
             </tr>
         </thead>
         <tbody>
+            {% for p in pacientes %}
             <tr class="tr1">
-                <td>CELSO SANTOS DOS REIS</td>
-                <td></td>
-                <td>ALVERINA SILVA DOS SANTOS REIS</td>
-                <td>27/05/1974</td>
-                <td>123.456.551-34</td>
-                <td>27629-00</td>
+                <td class="text-start">{{ p.nome }}</td>
+                <td class="text-start">{{ p.nome_social|default:"" }}</td>
+                <td class="text-start">{{ p.nome_mae }}</td>
+                <td class="text-start"> {{ p.nascimento }}</td>
+                <td class="text-start">{{ p.cpf }}</td>
+                <td class="text-start">{{ p.codigo }}</td>
             </tr>
+            {% empty %}
             <tr>
-                <td>SUMARA DE CARVALHO SANGALLI</td>
-                <td></td>
-                <td>MARLEIDE MARIA</td>
-                <td>12/07/2009</td>
-                <td>---</td>
-                <td>597-11</td>
+                <td colspan="6" class="text-center py-3">Nenhum paciente cadastrado.</td>
             </tr>
-            <tr>
-                <td>CLARA NUNES DE CARVALHO</td>
-                <td></td>
-                <td>SUMARA DE CARVALHO</td>
-                <td>16/04/1976</td>
-                <td>456.789.461-49</td>
-                <td>20466-00</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 
         
       </div>
