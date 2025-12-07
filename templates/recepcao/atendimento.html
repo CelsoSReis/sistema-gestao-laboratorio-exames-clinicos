@@ -51,10 +51,9 @@
             <tr>
                 <th>Nome</th>
                 <th>Nome Social</th>
-                <th>Mãe</th>
-                <th>Nascimento</th>
                 <th>CPF</th>
                 <th>Código</th>
+                <th>Ação</th>
             </tr>
         </thead>
         <tbody>
@@ -62,10 +61,9 @@
             <tr class="tr1">
                 <td class="text-start">{{ p.nome }}</td>
                 <td class="text-start">{{ p.nome_social|default:"" }}</td>
-                <td class="text-start">{{ p.nome_mae }}</td>
-                <td class="text-start"> {{ p.nascimento }}</td>
                 <td class="text-start">{{ p.cpf }}</td>
                 <td class="text-start">{{ p.codigo }}</td>
+                <td class="text-start"><a class="btn btn-success btn-sm" href="#" role="button"> <i class="bi bi-clipboard2-check text-white fs-6 me-1"></i>Atender</a></td>
             </tr>
             {% empty %}
             <tr>
